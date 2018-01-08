@@ -260,7 +260,7 @@ public class Log4jLogEventTest {
     @SuppressWarnings("deprecation")
     @Test
     public void testBuilderCorrectlyCopiesAllEventAttributes() {
-        final IndexedStringMap contextData = ContextDataFactory.createContextData();
+        final StringMap contextData = ContextDataFactory.createContextData();
         contextData.putValue("A", "B");
         final ContextStack contextStack = ThreadContext.getImmutableStack();
         final Exception exception = new Exception("test");
@@ -426,7 +426,7 @@ public class Log4jLogEventTest {
     @SuppressWarnings("deprecation")
     @Test
     public void testEquals() {
-        final IndexedStringMap contextData = ContextDataFactory.createContextData();
+        final StringMap contextData = ContextDataFactory.createContextData();
         contextData.putValue("A", "B");
         ThreadContext.push("first");
         final ContextStack contextStack = ThreadContext.getImmutableStack();
@@ -488,7 +488,7 @@ public class Log4jLogEventTest {
         assertSame(exception, event2.getThrown());
         assertEquals(987654321L, event2.getTimeMillis());
 
-        final IndexedStringMap differentMap = ContextDataFactory.emptyFrozenContextData();
+        final StringMap differentMap = ContextDataFactory.emptyFrozenContextData();
         different("different contextMap", builder(event).setContextData(differentMap), event);
         different("null contextMap", builder(event).setContextData(null), event);
 

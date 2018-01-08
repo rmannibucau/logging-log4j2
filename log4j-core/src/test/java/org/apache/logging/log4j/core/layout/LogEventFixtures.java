@@ -27,7 +27,7 @@ import org.apache.logging.log4j.core.impl.Log4jLogEvent;
 import org.apache.logging.log4j.core.impl.ThrowableProxy;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.apache.logging.log4j.spi.DefaultThreadContextStack;
-import org.apache.logging.log4j.util.IndexedStringMap;
+import org.apache.logging.log4j.util.StringMap;
 
 import static org.junit.Assert.*;
 
@@ -55,7 +55,7 @@ class LogEventFixtures {
         ioException.addSuppressed(new IndexOutOfBoundsException("I am suppressed exception 1"));
         ioException.addSuppressed(new IndexOutOfBoundsException("I am suppressed exception 2"));
         final ThrowableProxy throwableProxy = new ThrowableProxy(ioException);
-        final IndexedStringMap contextData = ContextDataFactory.createContextData();
+        final StringMap contextData = ContextDataFactory.createContextData();
         contextData.putValue("MDC.A", "A_Value");
         contextData.putValue("MDC.B", "B_Value");
         final DefaultThreadContextStack contextStack = new DefaultThreadContextStack(true);
